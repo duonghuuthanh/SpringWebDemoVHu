@@ -17,4 +17,5 @@ public interface ProductRepository {
     List<Product> getProducts(String kw);
     Product getProductById(int id);
     boolean addOrUpdateProduct(Product p);
+    boolean deleteProduct(int id);
 }

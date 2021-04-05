@@ -5,21 +5,14 @@
  */
 package com.dht.controller;
 
-import com.dht.pojo.Category;
-import com.dht.pojo.Product;
 import com.dht.service.CategoryService;
 import com.dht.service.ProductService;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -40,46 +33,15 @@ public class HomeController {
     }
     
     @RequestMapping("/")
-    public String home(Model model) {
-        model.addAttribute("products", this.productService.getProducts(""));
+    public String home(Model model, 
+            @RequestParam(name="kw", required = false) String kw,
+            @RequestParam(name="cateId", required = false) String cateId) {
+        if (cateId == null)
+            model.addAttribute("products", this.productService.getProducts(kw));
+        else
+            model.addAttribute("products", this.categoryService
+                    .getCategoryById(Integer.parseInt(cateId)).getProducts());
         return "home";
-    }
-    
-    @RequestMapping("/{cateId}")
-    public String getProduct(Model model, @PathVariable(name="cateId") int cateId) {
-        model.addAttribute("products", this.categoryService.getCategoryById(cateId).getProducts());
-        return "home";
-    }
-    
-    @RequestMapping("/product")
-    public String product(Model model) {
-        model.addAttribute("categories", this.categoryService.getCategories());
-        model.addAttribute("product", new Product());
-        return "product";
-    }
-    
-    @RequestMapping("/product/{productId}")
-    public String product(Model model, 
-            @PathVariable(name = "productId") int productId) {
-        model.addAttribute("categories", this.categoryService.getCategories());
-        model.addAttribute("product", this.productService.getProductById(productId));
-        return "product";
-    }
-    
-    @PostMapping("/add-product")
-    public String addProduct(Model model,
-            @ModelAttribute(value = "product") @Valid Product product,
-            BindingResult result) {
-        if (result.hasErrors()) {
-            return "product";
-        }
-        
-        if (!this.productService.addOrUpdateProduct(product)) {
-            model.addAttribute("error_msg", "SOMETHING WRONG!!! PLEASE COME BACK LATER!");
-            return "product";
-        }
-        
-        return "redirect:/";
     }
     
 //    @RequestMapping("/home/{msg}")

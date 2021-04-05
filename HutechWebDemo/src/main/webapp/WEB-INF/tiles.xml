@@ -12,11 +12,17 @@
         <put-attribute name="title" value="SaleApp" />
     </definition>
     <definition name="home" extends="baseLayout">
-        <put-attribute name="title" value="TRANG CHU" />
+        <put-attribute name="title" value="Trang chủ" />
         <put-attribute name="content" value="/WEB-INF/pages/home.jsp" />
     </definition>
     <definition name="product" extends="baseLayout">
-        <put-attribute name="title" value="SAN PHAM" />
+        <put-attribute name="title" value="Sản phẩm" />
         <put-attribute name="content" value="/WEB-INF/pages/product.jsp" />
     </definition>
+    <definition name="cart" extends="baseLayout">
+        <put-attribute name="title" value="Giỏ hàng" />
+        <put-attribute name="content" value="/WEB-INF/pages/cart.jsp" />
+    </definition>
+        
+        
 </tiles-definitions>

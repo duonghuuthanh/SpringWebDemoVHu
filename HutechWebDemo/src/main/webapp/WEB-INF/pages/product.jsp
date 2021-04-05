@@ -14,9 +14,7 @@
            action="/HutechWebDemo/add-product" 
            modelAttribute="product">
     
-    <div class="alert alert-danger">
-        <form:errors path="*" element="div" />
-    </div>
+    <form:errors path="*" cssClass="alert alert-danger" element="div" />
     <div class="form-group">
         <label for="name">Name</label>
         <form:input id="name" 
@@ -52,4 +50,5 @@
                class="btn btn-danger" />
     </div>
 </form:form>
+
 

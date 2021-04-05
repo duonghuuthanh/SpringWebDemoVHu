@@ -14,8 +14,12 @@
         </li>
         <c:forEach items="${categories}" var="cate">
         <li class="nav-item">
-            <a class="nav-link" href="<c:url value="/${cate.id}" />">${cate.name}</a>
+            <a class="nav-link" 
+               href="<c:url value="/?cateId=${cate.id}" />">${cate.name}</a>
         </li>
         </c:forEach>
+        <li class="nav-item">
+            <a class="nav-link" href="<c:url value="/cart" />">Giỏ hàng</a>
+        </li>
     </ul>
 </nav>
