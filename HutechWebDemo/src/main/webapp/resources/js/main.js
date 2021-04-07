@@ -21,4 +21,30 @@ function deleteProduct(productId) {
     }
 }
 
+function addToCart(productId) {
+    fetch(`/HutechWebDemo/api/cart/${productId}`).then(res => {
+        if (res.status == 200) {
+            let d = document.getElementById("cart-quantity");
+            d.innerText = parseInt(d.innerText) + 1;
+        } else {
+            alert("Something wrong!!!");
+        }
+    });
+}
+
+function saveCart() {
+    fetch("/HutechWebDemo//api/cart/", {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => {
+        if (res.status == 201) {
+            location.reload();
+        } else {
+            alert("Something wrong!!!");
+        }
+    })
+}
+
 

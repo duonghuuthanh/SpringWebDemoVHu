@@ -5,7 +5,11 @@
  */
 package com.dht.controller;
 
+import com.dht.pojo.Cart;
+import java.util.Map;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -15,7 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class CartController {
     @GetMapping("/cart")
-    public String cart() {
+    public String cart(Model model, HttpSession session) {
+        Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
+        model.addAttribute("cartProducts", cart);
         return "cart";
     }
 }

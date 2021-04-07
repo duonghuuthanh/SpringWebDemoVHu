@@ -5,7 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form"  
     uri="http://www.springframework.org/tags/form" %>
 
@@ -46,7 +46,8 @@
             <a href="<c:url value="/product/${p.id}" />" 
                class="btn btn-info">Cap nhat</a>
             <a href="javascript:;" 
-               class="btn btn-success">Thêm vào giỏ</a>
+               class="btn btn-success"
+               onclick="addToCart(${p.id})">Thêm vào giỏ</a>
         </td>
     </tr>
     </c:forEach>
