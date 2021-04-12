@@ -8,13 +8,11 @@ package com.dht.validator;
 import com.dht.pojo.Product;
 import java.util.HashSet;
 import java.util.Set;
-import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintViolation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import sun.jvm.hotspot.oops.ObjArray;
 
 /**
  *

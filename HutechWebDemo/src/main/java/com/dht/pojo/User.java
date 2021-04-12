@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -34,6 +35,8 @@ public class User implements Serializable {
     private boolean active;
     @Column(name = "user_role")
     private String userRole;
+    @Transient
+    private String confirmPassword;
 
     /**
      * @return the id
@@ -159,5 +162,19 @@ public class User implements Serializable {
      */
     public void setUserRole(String userRole) {
         this.userRole = userRole;
+    }
+
+    /**
+     * @return the confirmPassword
+     */
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    /**
+     * @param confirmPassword the confirmPassword to set
+     */
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

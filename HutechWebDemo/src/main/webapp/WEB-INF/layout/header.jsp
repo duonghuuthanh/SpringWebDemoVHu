@@ -23,5 +23,31 @@
                 Giỏ hàng <span class="badge badge-info" id="cart-quantity">${cartStat.totalQuantity}</span>
             </a>
         </li>
+        <c:choose>
+            <c:when test="${pageContext.request.userPrincipal.name == null}">
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/login" />">
+                        Dang nhap
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/register" />">
+                        Dang ky
+                    </a>
+                </li>
+            </c:when>
+            <c:when test="${pageContext.request.userPrincipal.name != null}">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        ${pageContext.request.userPrincipal.name}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/logout" />">
+                        Dang xuat
+                    </a>
+                </li>
+            </c:when>
+        </c:choose>
     </ul>
 </nav>
