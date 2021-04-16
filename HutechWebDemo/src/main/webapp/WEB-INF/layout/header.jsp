@@ -49,5 +49,10 @@
                 </li>
             </c:when>
         </c:choose>
+        <li class="nav-item">
+            <a class="nav-link" href="<c:url value="/stats" />">
+                Thong ke 
+            </a>
+        </li>
     </ul>
 </nav>

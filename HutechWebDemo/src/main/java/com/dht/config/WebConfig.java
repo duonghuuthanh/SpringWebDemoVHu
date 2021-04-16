@@ -8,8 +8,10 @@ package com.dht.config;
 import com.dht.formatter.CategoryFormatter;
 import com.dht.validator.DescriptionValidator;
 import com.dht.validator.WebValidator;
+import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
+import javassist.Loader;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -74,6 +76,11 @@ public class WebConfig implements WebMvcConfigurer {
         return validator();
     }
 
+    @Bean
+    public SimpleDateFormat simpleDateFormat() {
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        return f;
+    }
 
     
     

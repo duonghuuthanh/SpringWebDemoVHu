@@ -6,6 +6,8 @@
 package com.dht.service;
 
 import com.dht.pojo.Cart;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,4 +16,5 @@ import java.util.Map;
  */
 public interface OrderService {
     boolean addOrder(Map<Integer, Cart> cart);
+    List<Object[]> getOrderStats(Date fromDate, Date toDate);
 }
